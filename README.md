@@ -12,11 +12,15 @@ This project was built using Laravel for both backend and frontend. It allows us
 
 ## 🖼️ Screenshots
 
-> 🔽 *Screenshots coming soon. To add, take screenshots of your running app and drag them into this README file or upload them to the GitHub repo.*
-
+> 🔽 
 - **Homepage with task form and task list**
 - **Completed tasks with strikethrough**
 - **Delete button for each task**
+- 
+### ✅ After Adding Tasks
+<img width="631" height="817" alt="after-addTask" src="https://github.com/user-attachments/assets/bbce78b7-b669-4500-a08b-656d782f1da6" />
+### ✅ After Completing Tasks
+<img width="636" height="825" alt="after-complete" src="https://github.com/user-attachments/assets/766f726f-4f5f-4b65-ad29-5b7bbf47c2ca" />
 
 ---
 
