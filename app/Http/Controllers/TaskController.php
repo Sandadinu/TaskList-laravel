@@ -3,27 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function index(){
+    // Show all tasks
+    public function index()
+    {
         $tasks = Task::all();
         return view('tasks.index', compact('tasks'));
     }
 
-    public function store (Request $request){
-        $request -> validate(['title' => 'requested']);
-        Task::create($request->only('title'));
-        return redirect('/');
+    // Add new task
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required'
+        ]);
+
+        Task::create([
+            'title' => $request->title
+        ]);
+
+        return redirect()->back();
     }
 
-    public function update(Task $task){
-        $task->update(['completed' => !$task -> completed]);
-        return redirect('/');
+    // Mark task as completed
+    public function update($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->completed = true;
+        $task->save();
+
+        return redirect()->back();
     }
 
-    public function destroy(Task $task){
-        $task->delete();
-        return redirect('/')
+    // Delete task
+    public function destroy($id)
+    {
+        Task::destroy($id);
+        return redirect()->back();
     }
 }

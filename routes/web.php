@@ -1,14 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 use App\Http\Controllers\TaskController;
 
-Route::get('/', [TaskController::class, 'index']);
-Route::post('/tasks',[TaskController::class,'store']);
-Route::put('/tasks/{task}/toggle',[TaskController::class, 'update']);
-Route::delete('/task/{task}',[TaskController::class,'destroy']);
+// Show all tasks
+Route::get('/', [TaskController::class, 'index'])->name('tasks.index');
+
+// Add new task
+Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+
+// Mark task as complete
+Route::put('/tasks/{id}', [TaskController::class, 'update'])->name('tasks.update');
+
+// Delete task
+Route::delete('/tasks/{id}', [TaskController::class, 'destroy'])->name('tasks.destroy');

@@ -1,40 +1,62 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title> Task List</title>
-        <style>
-            body {font-family: Arial; margin: 40px; }
-            .done {text-decoration: line-through; color:gray;}
-        </style>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskList</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        .task {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
 
-    <body>
-        <h1> My Task Lists</h1>
-        <form action="/tasks" method="POST">
-            @call_user_func
-            <input type="text" name="title" placeholder="New Task" required>
-            <button type="submit">Add</button>
-        </form>
+    <h1>📝 My Task List</h1>
 
-        <ul>
-            @foreach($tasks as $task)
-                <li class="{{$task->completed ? 'done' : ''}}">
-                    {{$task->title}}
-                    <form action="/tasks/{{$task-id }}/toggle" method="POST" style="display:inline">
-                        @call_user_func
-                        @method('PUT')
-                        <button type="submit"> {{$task->completed ? 'undo' : 'Done' }}</button>
-                    </form>
+    {{-- Add New Task --}}
+    <form action="/tasks" method="POST">
+        @csrf
+        <input type="text" name="title" placeholder="Enter new task" required>
+        <button type="submit">Add Task</button>
+    </form>
 
-                    <form action="/tasks/{{ $task->id}}" method="POST" style="display:inline">
-                        @call_user_func
-                        @method('DELETE')
-                        <button type="submit"> Delete</button>
-                    </form>
-                </li>
-            @endforeach
-        </ul>
-    </body>
-<html>
-        
+    {{-- Display Tasks --}}
+    @foreach ($tasks as $task)
+        <div class="task">
+            <span class="{{ $task->completed ? 'completed' : '' }}">{{ $task->title }}</span>
 
+            {{-- Mark as Complete --}}
+            @if (!$task->completed)
+                <form action="/tasks/{{ $task->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit">✅ Complete</button>
+                </form>
+            @endif
+
+            {{-- Delete Task --}}
+            <form action="/tasks/{{ $task->id }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit">❌ Delete</button>
+            </form>
+        </div>
+    @endforeach
+
+</body>
+</html>
