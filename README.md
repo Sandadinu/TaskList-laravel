@@ -1,3 +1,62 @@
+# 📝 TaskList Laravel App
+
+A simple Laravel-based to-do list application that allows users to add, complete, and delete tasks.
+
+--
+
+## 📄 Project Description
+
+This project was built using Laravel for both backend and frontend. It allows users to manage daily tasks efficiently through a minimal and functional interface. The application stores tasks in a SQLite database and demonstrates CRUD operations using Laravel's MVC architecture.
+
+---
+
+## 🖼️ Screenshots
+
+> 🔽 *Screenshots coming soon. To add, take screenshots of your running app and drag them into this README file or upload them to the GitHub repo.*
+
+- **Homepage with task form and task list**
+- **Completed tasks with strikethrough**
+- **Delete button for each task**
+
+---
+
+## 🧰 Tech Stack
+
+- **Framework:** Laravel 10
+- **Language:** PHP 8
+- **Templating Engine:** Blade
+- **Database:** SQLite
+- **Styling:** Inline CSS
+- **Version Control:** Git + GitHub
+
+---
+
+## 🚀 Features
+
+- ✅ Add new tasks
+- ✅ View list of tasks
+- ✅ Mark tasks as completed
+- ✅ Delete tasks
+- ✅ Minimal UI with inline styling
+- ✅ Full Laravel MVC structure
+
+---
+
+## 📦 Setup Instructions
+
+1. Clone the repo
+2. Run `composer install`
+3. Create SQLite database: `database/database.sqlite`
+4. Update `.env` file:
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
